@@ -1,0 +1,12 @@
+<div class="grid my-10 justify-center">
+  <h1 class="text-6xl font-bold text-white mb-10 text-center">Formulario de clientes</h1>
+  <form action="" [formGroup]="formCliente" (ngSubmit)="guardarCliente()" class="grid grid-cols-3 gap-4 mx-auto p-5">
+    <input type="text" placeholder="Nombre" class="input input-neutral" formControlName="nombre"/>
+    <input type="number" placeholder="Nit" class="input input-neutral" formControlName="nit"/>
+    <input type="text" placeholder="Email" class="input input-neutral" formControlName="email"/>
+    <button class="btn btn-success" [disabled]="formCliente.invalid">Guardar</button>
+    @if (clienteService.clienteEditando()) {
+    <button type="button" class="btn btn-secondary" (click)="cancelar()"> Cancelar </button>
+  }
+  </form>
+</div>

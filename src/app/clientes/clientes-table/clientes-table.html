@@ -1,0 +1,27 @@
+<div class="flex justify-center my-10">
+  <table class="table w-auto mx-auto">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Nit</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cliente of clienteService.clientes(); track cliente.id) {
+        <tr class="hover:bg-base-300">
+          <td>{{cliente.id}}</td>
+          <td>{{cliente.nombre}}</td>
+          <td>{{cliente.nit}}</td>
+          <td>{{cliente.email}}</td>
+          <td>
+            <button class="btn btn-error m-1" (click)="deleteCliente(cliente.id)">Eliminar</button>
+            <button class="btn btn-warning m-1" (click)="clienteService.seleccionarCliente(cliente)">Actualizar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
