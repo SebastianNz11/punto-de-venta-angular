@@ -1,0 +1,25 @@
+<div class="grid my-10 justify-center">
+  <h1 class="text-6xl font-bold text-white mb-10 text-center">Formulario de ventas</h1>
+  <form action="" [formGroup]="formVenta" (ngSubmit)="guardarVenta()" class="grid grid-cols-2 gap-4 mx-auto p-5">
+    <select class="select select-neutral" formControlName="id_usuario">
+      <option value="" disabled selected>Seleccione Usuario</option>
+      @for (usuario of usuarioService.usuarios(); track usuario.id_usuario) {
+        <option [value]="usuario.id_usuario">{{usuario.nombre}} - {{usuario.rol}}</option>
+      }
+    </select>
+    
+    <select class="select select-neutral" formControlName="id_cliente">
+      <option value="" disabled selected>Seleccione Cliente</option>
+      @for (cliente of clienteService.clientes(); track cliente.id) {
+        <option [value]="cliente.id">{{cliente.nombre}} - {{cliente.nit}}</option>
+      }
+    </select>
+    
+    <input type="date" placeholder="Fecha" class="input input-neutral w-full col-span-2" formControlName="fecha"/>
+    
+    <button class="btn btn-success col-span-2" [disabled]="formVenta.invalid">Guardar</button>
+    @if (ventaService.ventaEditando()) {
+      <button type="button" class="btn btn-secondary col-span-2" (click)="cancelar()"> Cancelar </button>
+    }
+  </form>
+</div>

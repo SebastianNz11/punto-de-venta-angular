@@ -1,0 +1,31 @@
+<div class="flex justify-center my-10">
+  <table class="table w-auto mx-auto">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Venta ID</th>
+        <th>Producto ID</th>
+        <th>Cantidad</th>
+        <th>Precio U.</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (detalle of detalleService.detalles(); track detalle.id) {
+        <tr class="hover:bg-base-300">
+          <td>{{detalle.id}}</td>
+          <td>{{detalle.ventaId}}</td>
+          <td>{{detalle.productoId}}</td>
+          <td>{{detalle.cantidad}}</td>
+          <td>{{detalle.precio_unitario | currency}}</td>
+          <td>{{detalle.total | currency}}</td>
+          <td>
+            <button class="btn btn-error m-1" (click)="deleteDetalle(detalle.id)">Eliminar</button>
+            <button class="btn btn-warning m-1" (click)="detalleService.seleccionarDetalle(detalle)">Actualizar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

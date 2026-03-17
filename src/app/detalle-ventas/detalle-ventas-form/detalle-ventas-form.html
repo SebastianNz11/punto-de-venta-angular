@@ -1,0 +1,67 @@
+<div class="grid my-10 justify-center">
+  <h1 class="text-6xl font-bold text-white mb-10 text-center">
+    Formulario de Detalles de Venta
+  </h1>
+
+  <form [formGroup]="formDetalle" (ngSubmit)="guardarDetalle()" class="grid grid-cols-2 gap-4 mx-auto p-5">
+
+    <select class="select select-neutral" formControlName="id_venta">
+      <option value="" disabled>Seleccione Venta</option>
+
+      @for (venta of ventaService.ventas(); track venta.id) {
+        <option [value]="venta.id">
+          Venta #{{venta.id}} - Cliente {{venta.clienteId}}
+        </option>
+      }
+
+    </select>
+
+    <select class="select select-neutral" formControlName="id_producto">
+      <option value="" disabled>Seleccione Producto</option>
+
+      @for (producto of productoService.productos(); track producto.id) {
+    <option [value]="producto.id">
+      {{producto.nombre}} - {{producto.precio | currency}}
+    </option>
+  }
+
+    </select>
+
+    <input
+      type="number"
+      placeholder="Cantidad"
+      class="input input-neutral"
+      formControlName="cantidad"
+    />
+
+    <input
+      type="number"
+      placeholder="Precio Unitario"
+      class="input input-neutral"
+      formControlName="precio_unitario"
+    />
+
+    <input
+      type="number"
+      placeholder="Total"
+      class="input input-neutral col-span-2"
+      formControlName="total"
+      readonly
+    />
+
+    <button class="btn btn-success col-span-2" [disabled]="formDetalle.invalid">
+      Guardar
+    </button>
+
+    @if (detalleService.detalleEditando()) {
+      <button
+        type="button"
+        class="btn btn-secondary col-span-2"
+        (click)="cancelar()"
+      >
+        Cancelar
+      </button>
+    }
+
+  </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="flex justify-center my-10">
+  <table class="table w-auto mx-auto">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>ID Usuario</th>
+        <th>ID Cliente</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (venta of ventaService.ventas(); track venta.id) {
+        <tr class="hover:bg-base-300">
+          <td>{{venta.id}}</td>
+          <td>{{venta.fecha | date:'longDate'}}</td>
+          <td>{{venta.usuarioId}}</td>
+          <td>{{venta.clienteId}}</td>
+          <td>
+            <button class="btn btn-error m-1" (click)="deleteVenta(venta.id)">Eliminar</button>
+            <button class="btn btn-warning m-1" (click)="ventaService.seleccionarVenta(venta)">Actualizar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

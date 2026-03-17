@@ -1,0 +1,29 @@
+<div class="flex justify-center my-10">
+  <table class="table w-auto mx-auto">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Fecha Ingreso</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of productoService.productos(); track producto.id) {
+        <tr class="hover:bg-base-300">
+          <td>{{producto.id}}</td>
+          <td>{{producto.nombre}}</td>
+          <td>{{producto.precio}}</td>
+          <td>{{producto.stock}}</td>
+          <td>{{producto.fecha_ingreso | date:'longDate'}}</td>
+          <td>
+            <button class="btn btn-error m-1" (click)="deleteProducto(producto.id)">Eliminar</button>
+            <button class="btn btn-warning m-1" (click)="productoService.seleccionarProducto(producto)">Actualizar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+<div class="grid my-10 justify-center">
+  <h1 class="text-6xl font-bold text-white mb-10 text-center">Formulario de productos</h1>
+  <form action="" [formGroup]="formProducto" (ngSubmit)="guardarProducto()" class="grid grid-cols-2 gap-4 mx-auto p-5">
+    <input type="text" placeholder="Nombre" class="input input-neutral" formControlName="nombre"/>
+    <input type="number" placeholder="Precio" class="input input-neutral" formControlName="precio"/>
+    <input type="number" placeholder="Stock" class="input input-neutral" formControlName="stock"/>
+    <input type="date" placeholder="Fecha Ingreso" class="input input-neutral w-full" formControlName="fecha_ingreso"/>
+    <button class="btn btn-success col-span-2" [disabled]="formProducto.invalid">Guardar</button>
+    @if (productoService.productoEditando()) {
+      <button type="button" class="btn btn-secondary col-span-2" (click)="cancelar()"> Cancelar </button>
+    }
+  </form>
+</div>

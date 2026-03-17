@@ -1,0 +1,18 @@
+<div class="grid my-10 justify-center">
+  <h1 class="text-6xl font-bold text-white mb-10 text-center">Formulario de usuarios</h1>
+  <form action="" [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()" class="grid grid-cols-2 gap-4 mx-auto p-5">
+    <input type="text" placeholder="Nombre" class="input input-neutral" formControlName="nombre"/>
+    <input type="email" placeholder="Correo Electrónico" class="input input-neutral" formControlName="email"/>
+    <input type="password" placeholder="Contraseña" class="input input-neutral" formControlName="password"/>
+    <select class="select select-neutral" formControlName="rol">
+      <option value="" disabled selected>Seleccione un rol</option>
+      <option value="admin">Administrador</option>
+      <option value="cajero">Cajero</option>
+      <option value="vendedor">Vendedor</option>
+    </select>
+    <button class="btn btn-success" [disabled]="formUsuario.invalid">Guardar</button>
+    @if (usuarioService.usuarioEditando()) {
+      <button type="button" class="btn btn-secondary" (click)="cancelar()"> Cancelar </button>
+    }
+  </form>
+</div>

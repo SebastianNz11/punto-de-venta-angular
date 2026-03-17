@@ -1,0 +1,27 @@
+<div class="flex justify-center my-10">
+  <table class="table w-auto mx-auto">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (usuario of usuarioService.usuarios(); track usuario.id_usuario) {
+        <tr class="hover:bg-base-300">
+          <td>{{usuario.id_usuario}}</td>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.rol}}</td>
+          <td>
+            <button class="btn btn-error m-1" (click)="deleteUsuario(usuario.id_usuario)">Eliminar</button>
+            <button class="btn btn-warning m-1" (click)="usuarioService.seleccionarUsuario(usuario)">Actualizar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

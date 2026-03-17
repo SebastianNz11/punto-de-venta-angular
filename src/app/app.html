@@ -1,2 +1,22 @@
-
-<router-outlet></router-outlet>
+<div class="min-h-screen bg-base-100 flex flex-col">
+  @if (authService.isAuthenticated()) {
+  <div class="navbar bg-neutral text-neutral-content">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" routerLink="/">Punto de Venta</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <li><a routerLink="/clientes">Clientes</a></li>
+        <li><a routerLink="/usuarios">Usuarios</a></li>
+        <li><a routerLink="/productos">Productos</a></li>
+        <li><a routerLink="/ventas">Ventas</a></li>
+        <li><a routerLink="/detalle-ventas">Detalles</a></li>
+        <li><button class="btn btn-ghost" (click)="authService.logout()">Salir</button></li>
+      </ul>
+    </div>
+  </div>
+  }
+  <div class="flex-grow p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
