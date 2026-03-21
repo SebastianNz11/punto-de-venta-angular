@@ -14,7 +14,7 @@ export class UsuariosTable implements OnInit {
     this.usuarioService.loadUsuarios();
   }
 
-  deleteUsuario(id: number) {
+  deleteUsuario(id: string) {
     this.usuarioService.deleteUsuario(id);
   }
 

@@ -14,9 +14,13 @@ export class UsuarioService {
   usuarios = signal<Usuario[]>([]);
   usuarioEditando = signal<Usuario | null>(null);
 
+  private normalizeUsuario(u: Usuario): Usuario {
+    return { ...u, id_usuario: u.id_usuario ?? u.id ?? '' };
+  }
+
   loadUsuarios() {
     this.http.get<Usuario[]>(this.urlUsuarios).subscribe({
-      next: (data) => this.usuarios.set(data),
+      next: (data) => this.usuarios.set(data.map(u => this.normalizeUsuario(u))),
       error: (err) => console.error(err)
     });
   }
@@ -25,13 +29,13 @@ export class UsuarioService {
     this.http.post<Usuario>(this.urlUsuarios, usuario).subscribe((nuevo) => {
       this.usuarios.update(usuarios => [
         ...usuarios,
-        nuevo
+        this.normalizeUsuario(nuevo)
       ]);
       alert('Usuario creado');
     });
   }
 
-  deleteUsuario(id: number) {
+  deleteUsuario(id: string) {
     this.http.delete<void>(`${this.urlUsuarios}/${id}`).subscribe({
       next: () => {
         this.usuarios.update(usuarios =>
@@ -43,13 +47,13 @@ export class UsuarioService {
     alert('Usuario eliminado');
   }
 
-  updateUsuario(id: number, usuario: CreateUsuarioDto) {
+  updateUsuario(id: string, usuario: CreateUsuarioDto) {
     this.http.put<Usuario>(`${this.urlUsuarios}/${id}`, usuario).subscribe(actualizado => {
       this.usuarios.update(usuarios =>
-        usuarios.map(u => u.id_usuario === id ? actualizado : u)
+        usuarios.map(u => u.id_usuario === id ? this.normalizeUsuario(actualizado) : u)
       );
+      alert('Usuario actualizado');
     });
-    alert('Usuario actualizado');
   }
 
   seleccionarUsuario(usuario: Usuario) {
