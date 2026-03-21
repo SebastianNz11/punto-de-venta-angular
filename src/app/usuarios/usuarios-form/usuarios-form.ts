@@ -33,7 +33,7 @@ export class UsuariosForm {
     const usuario = this.formUsuario.getRawValue();
     const usuarioEdit = this.usuarioService.usuarioEditando();
     if (usuarioEdit) {
-      this.usuarioService.updateUsuario(usuarioEdit.id_usuario, usuario);
+      this.usuarioService.updateUsuario(usuarioEdit.id_usuario ?? usuarioEdit.id ?? '', usuario);
       this.cancelar();
     } else {
       this.usuarioService.postUsuario(usuario);

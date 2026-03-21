@@ -17,7 +17,7 @@
           <td>{{usuario.email}}</td>
           <td>{{usuario.rol}}</td>
           <td>
-            <button class="btn btn-error m-1" (click)="deleteUsuario(usuario.id_usuario)">Eliminar</button>
+            <button class="btn btn-error m-1" (click)="deleteUsuario(usuario.id_usuario ?? usuario.id ?? '')">Eliminar</button>
             <button class="btn btn-warning m-1" (click)="usuarioService.seleccionarUsuario(usuario)">Actualizar</button>
           </td>
         </tr>
