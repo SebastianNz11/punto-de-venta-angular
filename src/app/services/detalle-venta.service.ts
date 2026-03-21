@@ -8,7 +8,7 @@ import { CreateDetalleVentaDto } from '../interfaces/crear-detalle-venta.interfa
 })
 export class DetalleVentaService {
 
-  private urlDetalles = 'http://localhost:3000/detalle-venta';
+  private urlDetalles = 'https://punto-venta-backend-hphi.onrender.com/detalle-venta';
   // Wait, User originally specified: "...esta para usuarioPOST http://localhost:3000/usuario".
   // Assuming the backend has `/detalle-ventas` or `/detalle-venta`.
   private http = inject(HttpClient);

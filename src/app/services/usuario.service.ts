@@ -8,7 +8,7 @@ import { CreateUsuarioDto } from '../interfaces/crear-usuario.interface';
 })
 export class UsuarioService {
 
-  private urlUsuarios = 'http://localhost:3000/usuario';
+  private urlUsuarios = 'https://punto-venta-backend-hphi.onrender.com/usuario';
   private http = inject(HttpClient);
 
   usuarios = signal<Usuario[]>([]);

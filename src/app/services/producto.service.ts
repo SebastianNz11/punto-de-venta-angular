@@ -8,7 +8,7 @@ import { CreateProductoDto } from '../interfaces/crear-producto.interface';
 })
 export class ProductoService {
 
-  private urlProductos = 'http://localhost:3000/producto';
+  private urlProductos = 'https://punto-venta-backend-hphi.onrender.com/producto';
   private http = inject(HttpClient);
 
   productos = signal<Producto[]>([]);

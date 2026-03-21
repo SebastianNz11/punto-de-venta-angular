@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private urlLogin = 'http://localhost:3000/auth/login';
+  private urlLogin = 'https://punto-venta-backend-hphi.onrender.com/auth/login';
   private http = inject(HttpClient);
   private router = inject(Router);
 

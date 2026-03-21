@@ -8,7 +8,7 @@ import { CreateVentaDto } from '../interfaces/crear-venta.interface';
 })
 export class VentaService {
 
-  private urlVentas = 'http://localhost:3000/venta';
+  private urlVentas = 'https://punto-venta-backend-hphi.onrender.com/venta';
   private http = inject(HttpClient);
 
   ventas = signal<Venta[]>([]);

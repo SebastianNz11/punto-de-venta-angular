@@ -8,7 +8,7 @@ import { CreateClienteDto } from '../interfaces/crear-cliente.interface';
 })
 export class ClienteService {
 
-  private urlClientes = 'http://localhost:3000/cliente';
+  private urlClientes = 'https://punto-venta-backend-hphi.onrender.com/cliente';
   private http = inject(HttpClient);
 
   clientes = signal<Cliente[]>([]);
